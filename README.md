@@ -1,5 +1,7 @@
 # ECG heartbeat classification with a 1D CNN
 
+> **Provenance and scope.** MSc Data Science coursework, 2026. This cleaned portfolio reconstruction contains evaluation helpers and tests. The original CNN training notebook, weights, raw dataset and assessed report are not included, so the headline assessment results cannot be reproduced from this repository. No patient-disjoint evaluation is established by the available artefacts.
+
 Leakage-aware, imbalance-aware evaluation components from an MSc machine
 learning project on MIT-BIH-derived heartbeat segments.
 
@@ -35,3 +37,12 @@ python -m unittest discover -s tests -v
 
 The deliberate limitation is that no reported score is silently recreated from
 synthetic data.
+
+
+## Validation scope
+
+Use `preprocessing_safe_cv` to fit a fresh scaler within each fold. Passing real patient or recording IDs in `groups` uses stratified group folds; without groups, the function uses beat-level stratification and cannot establish independence between patients. The legacy `leakage_safe_cv` name is retained only for compatibility. This new option does not retrospectively validate the original CNN results.
+
+## Licence
+
+Original material is available for portfolio evaluation under the [evaluation-only licence](LICENSE). Third-party data, libraries and original assessment materials retain their own terms.
